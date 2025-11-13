@@ -402,7 +402,10 @@ class Notebook(Help, Format, KeyBindings):
             self.quitting = True
             return
         if self.kd:
-            await self.kd.stop()
+            try:
+                await self.kd.stop()
+            except Exception:
+                pass
         self.app.exit()
 
     def go_up(self):
